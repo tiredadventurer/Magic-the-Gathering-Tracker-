@@ -10,6 +10,7 @@ const plusCommandDmg = document.querySelector("#plusCommandDmg")
 const startHealth = document.querySelector("#startHealth")
 
 const newCard = document.querySelector("#newCard")
+const newGame = document.querySelector('#newGame')
 
 let healthPoints = 40;
 let commandPoints = 0;
@@ -47,9 +48,35 @@ newCard.addEventListener('click', function (e) {
 })
 
 
+newGame.addEventListener('click', function () {
+    commandPoints = 0
+    commandDmg.innerText = commandPoints
+    healthPoints = 40;
+    startHealth.value = healthPoints;
+    healthTrack.innerText = healthPoints;
+
+    let sects = document.querySelectorAll('.section')
+
+    for (let i = 1; i < sects.length; i++) {
+        sects[i].remove()
+    }
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
 function addCard() {
-    const section = document.createElement("section")
-    section.classList.add("section")
+    const sect = document.createElement("section")
+    sect.classList.add("section")
     const divContainer = document.createElement("div")
     divContainer.classList.add("container")
     const divCol = document.createElement("div")
@@ -60,8 +87,8 @@ function addCard() {
     divCard.classList.add("card")
 
 
-    body.append(section)
-    section.append(divContainer)
+    body.append(sect)
+    sect.append(divContainer)
     divContainer.append(divCol)
     divCol.append(divCol2)
     divCol2.append(divCard)
@@ -69,7 +96,29 @@ function addCard() {
 
     createBoxContent(divCard);
 
-    createFooter(divCard);
+    const foot = document.createElement("footer")
+    foot.classList.add("card-footer")
+    const deleteCard = document.createElement("button")
+    const newCard2 = document.createElement("button")
+
+    deleteCard.classList.add("is-primary", "button", "card-footer-item", "is-large")
+    newCard2.classList.add("is-info", "button", "card-footer-item", "is-large")
+
+    deleteCard.innerText = "Delete Card"
+    newCard2.innerText = "New Card"
+
+    divCard.append(foot)
+    foot.append(deleteCard)
+    foot.append(newCard2)
+
+    newCard2.addEventListener('click', function (e) {
+        e.preventDefault()
+        addCard()
+    })
+
+    deleteCard.addEventListener('click', function () {
+        sect.remove()
+    })
 }
 
 
@@ -173,24 +222,36 @@ function newCounter(divCont) {
 
 
 
-function createFooter(divCard) {
-    const foot = document.createElement("footer")
-    foot.classList.add("card-footer")
-    const deleteCard = document.createElement("button")
-    const newCard2 = document.createElement("button")
+// function createFooter(divCard) {
+//     const foot = document.createElement("footer")
+//     foot.classList.add("card-footer")
+//     const deleteCard = document.createElement("button")
+//     const newCard2 = document.createElement("button")
 
-    deleteCard.classList.add("is-primary", "button", "card-footer-item", "is-large")
-    newCard2.classList.add("is-info", "button", "card-footer-item", "is-large")
+//     deleteCard.classList.add("is-primary", "button", "card-footer-item", "is-large")
+//     newCard2.classList.add("is-info", "button", "card-footer-item", "is-large")
 
-    deleteCard.innerText = "Delete Card"
-    newCard2.innerText = "New Card"
+//     deleteCard.innerText = "Delete Card"
+//     newCard2.innerText = "New Card"
 
-    divCard.append(foot)
-    foot.append(deleteCard)
-    foot.append(newCard2)
+//     divCard.append(foot)
+//     foot.append(deleteCard)
+//     foot.append(newCard2)
 
-    newCard2.addEventListener('click', function (e) {
-        e.preventDefault()
-        addCard()
-    })
-}
+//     newCard2.addEventListener('click', function (e) {
+//         e.preventDefault()
+//         addCard()
+//     })
+
+// }
+    // deleteCard.addEventListener('click', function (sect, divCard) {
+
+    //     this.parentElement.remove(sect)
+    //     this.parentElement.remove(divCard)
+    // })
+
+
+
+// function del(sect) {
+//     this.sect.remove()
+// }
