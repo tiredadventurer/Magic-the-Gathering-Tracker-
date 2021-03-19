@@ -19,12 +19,13 @@ minHealth.addEventListener('click', function () {
     healthPoints -= 1;
     healthTrack.innerText = healthPoints;
 })
+//this is to subtract health points when clicked
 
 plusHealth.addEventListener('click', function () {
     healthPoints += 1;
     healthTrack.innerText = healthPoints;
 })
-
+//this is to add health points when clicked
 plusCommandDmg.addEventListener('click', function () {
     commandPoints += 1;
     commandDmg.innerText = commandPoints;
@@ -34,6 +35,7 @@ minCommandDmg.addEventListener('click', function () {
     commandPoints -= 1;
     commandDmg.innerText = commandPoints;
 })
+//the above 2 is used to track Commander dmg 
 
 startHealth.addEventListener('change', function () {
     healthPoints = parseInt(startHealth.value)
@@ -63,7 +65,7 @@ newGame.addEventListener('click', function () {
 })
 
 
-
+//above is used to reset everything to default state prior to user interaction
 
 
 
